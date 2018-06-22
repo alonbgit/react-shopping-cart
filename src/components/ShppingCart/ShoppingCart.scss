@@ -1,0 +1,21 @@
+
+.shopping-cart {
+
+    border: 1px solid black;
+    width: 70%;
+    height: 800px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .header {
+        font-weight: bold;
+        font-size: 25px;
+        margin-top: 20px;
+    }
+
+    .product-list {
+        margin-top: 20px;
+    }
+
+}

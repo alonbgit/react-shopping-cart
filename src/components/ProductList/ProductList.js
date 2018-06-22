@@ -23,7 +23,8 @@ class ProductList extends Component {
 
                 {productRows.map((products, index) => (
                     <ProductRow products={products}
-                                key={index}/>
+                                key={index}
+                                openPopup={this.props.openPopup}/>
                 ))}
 
             </div>

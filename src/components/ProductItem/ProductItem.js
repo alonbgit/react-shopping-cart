@@ -7,7 +7,9 @@ class ProductItem extends Component {
     render() {
         return (
             <div className="product-item">
-                <img src={this.props.imageUrl} alt=""/>
+                <img src={this.props.imageUrl}
+                     alt=""
+                     onClick={this.props.openPopup}/>
                 <div className="product-details">
                     <span className="product-name">{this.props.name}</span>
                     <span className="product-description">{this.props.description}</span>

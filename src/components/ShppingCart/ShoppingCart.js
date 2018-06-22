@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProductList from '../ProductList/ProductList';
 import './ShoppingCart.scss';
+import ProductPopup from '../ProductPopup/ProductPopup';
 
 import moneyImage from '../../images/products/chimpanzee.jpg';
 import kittensImage from '../../images/products/kittens.jpg';
@@ -14,11 +15,13 @@ import mangoImage from '../../images/products/mango.png';
 class ShoppingCart extends Component {
 
     state = {
+        selectedProduct: null,
         products: [
             {
                 id: 1,
                 name: 'Monkey',
                 description: 'This is a monkey',
+                fullDescription: 'This is full description on the monkey',
                 price: 5.50,
                 imageUrl: moneyImage
             },
@@ -26,6 +29,7 @@ class ShoppingCart extends Component {
                 id: 2,
                 name: 'Kitten',
                 description: 'This is a kitten',
+                fullDescription: 'This is full description on the kitten',
                 price: 10.00,
                 imageUrl: kittensImage
             },
@@ -33,6 +37,7 @@ class ShoppingCart extends Component {
                 id: 3,
                 name: 'Shark',
                 description: 'This is a shark',
+                fullDescription: 'This is full description on the shark',
                 price: 15.00,
                 imageUrl: sharkImage
             },
@@ -40,6 +45,7 @@ class ShoppingCart extends Component {
                 id: 4,
                 name: 'Puppy',
                 description: 'This is a puppy',
+                fullDescription: 'This is full description on the puppy',
                 price: 5.00,
                 imageUrl: dogImage
             },
@@ -47,6 +53,7 @@ class ShoppingCart extends Component {
                 id: 5,
                 name: 'Apple',
                 description: 'This is an apple',
+                fullDescription: 'This is full description on the apple',
                 price: 5.50,
                 imageUrl: appleImage
             },
@@ -54,6 +61,7 @@ class ShoppingCart extends Component {
                 id: 6,
                 name: 'Orange',
                 description: 'This is an orange',
+                fullDescription: 'This is full description on the orange',
                 price: 10.00,
                 imageUrl: orangeImage
             },
@@ -61,6 +69,7 @@ class ShoppingCart extends Component {
                 id: 7,
                 name: 'Peach',
                 description: 'This is a peach',
+                fullDescription: 'This is full description on the peach',
                 price: 15.00,
                 imageUrl: peachImage
             },
@@ -68,6 +77,7 @@ class ShoppingCart extends Component {
                 id: 8,
                 name: 'Mango',
                 description: 'This is a mango',
+                fullDescription: 'This is full description on the mango',
                 price: 5.00,
                 imageUrl: mangoImage
             }
@@ -78,9 +88,26 @@ class ShoppingCart extends Component {
         return (
             <div className="shopping-cart">
                 <span className="header">Products</span>
-                <ProductList products={this.state.products}/>
+                <ProductList products={this.state.products}
+                             openPopup={this.openPopup}/>
+                {this.state.selectedProduct && <ProductPopup 
+                                                        close={this.closePopup}
+                                                        product={this.state.selectedProduct}/>}
+                {this.state.selectedProduct && <div className="overlay"></div>}
             </div>
         )
+    }
+
+    openPopup = (product) => {
+        this.setState({
+            selectedProduct: product
+        });
+    }
+
+    closePopup = () => {
+        this.setState({
+            selectedProduct: null
+        });
     }
 
 }

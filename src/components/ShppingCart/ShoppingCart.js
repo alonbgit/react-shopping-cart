@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import ProductList from '../ProductList/ProductList';
 import './ShoppingCart.scss';
 
-import moneyImage from '../../images/products/chimpanzee.jpg'
-import kittensImage from '../../images/products/kittens.jpg'
-import sharkImage from '../../images/products/shark.jpg'
-import dogImage from '../../images/products/dog.jpg'
+import moneyImage from '../../images/products/chimpanzee.jpg';
+import kittensImage from '../../images/products/kittens.jpg';
+import sharkImage from '../../images/products/shark.jpg';
+import dogImage from '../../images/products/dog.jpg';
+import appleImage from '../../images/products/apple.jpg';
+import orangeImage from '../../images/products/orange.jpg';
+import peachImage from '../../images/products/peach.jpg';
+import mangoImage from '../../images/products/mango.png';
 
 class ShoppingCart extends Component {
 
@@ -38,6 +42,34 @@ class ShoppingCart extends Component {
                 description: 'This is a puppy',
                 price: 5.00,
                 imageUrl: dogImage
+            },
+            {
+                id: 5,
+                name: 'Apple',
+                description: 'This is an apple',
+                price: 5.50,
+                imageUrl: appleImage
+            },
+            {
+                id: 6,
+                name: 'Orange',
+                description: 'This is an orange',
+                price: 10.00,
+                imageUrl: orangeImage
+            },
+            {
+                id: 7,
+                name: 'Peach',
+                description: 'This is a peach',
+                price: 15.00,
+                imageUrl: peachImage
+            },
+            {
+                id: 8,
+                name: 'Mango',
+                description: 'This is a mango',
+                price: 5.00,
+                imageUrl: mangoImage
             }
         ]
     }

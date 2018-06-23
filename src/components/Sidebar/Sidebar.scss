@@ -1,0 +1,60 @@
+
+.side-bar {
+
+    width: 350px;
+    min-height: 150px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: rgba(25, 25, 25, 0.5);
+    display: flex;
+    flex-direction: column;
+
+    .seperator {
+        border-bottom: 1px solid white;
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    .total-price {
+        font-weight: bold;
+        color: white;
+        font-size: 26px;
+        text-align: right;
+        margin-top: 6px;
+    }
+
+    .total-amount {
+        font-weight: bold;
+        color: white;
+        font-size: 20px;
+        text-align: right;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+
+        button {
+            border: 1px solid black;
+            outline: 0;
+            background: white;
+            box-sizing: border-box;
+            width: 90px;
+            height: 30px;
+            box-sizing: border-box;
+
+        }
+    
+        button:hover {
+            background: black;
+            color: white;
+            cursor: pointer;
+        }
+
+    }
+
+}

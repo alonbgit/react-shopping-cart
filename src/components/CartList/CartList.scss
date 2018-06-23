@@ -1,0 +1,49 @@
+
+.cart-list {
+
+    .product-details {
+        
+        margin-top: 7px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            width: 70px;
+            height: 70px;
+        }
+
+        .product-name, .price, .amount {
+            color: white;
+            font-weight: bold;
+        }
+
+        .add-btn, .remove-btn {
+            border: 1px solid black;
+            outline: 0;
+            background: white;
+            box-sizing: border-box;
+            width: 30px;
+            height: 30px;
+            box-sizing: border-box;
+        }
+
+        .add-btn:hover, .remove-btn:hover {
+            background: black;
+            color: white;
+            cursor: pointer;
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            margin-top: 0;
+
+            .amount {
+                margin: 0 5px;
+            }
+        }
+
+    }
+
+}

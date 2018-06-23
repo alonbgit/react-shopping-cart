@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProductList from '../ProductList/ProductList';
 import './ShoppingCart.scss';
 import ProductPopup from '../ProductPopup/ProductPopup';
+import Sidebar from '../Sidebar/Sidebar';
 
 import moneyImage from '../../images/products/chimpanzee.jpg';
 import kittensImage from '../../images/products/kittens.jpg';
@@ -86,8 +87,26 @@ class ShoppingCart extends Component {
 
         cart: [
             {
-                productId: 1,
+                product: {
+                    id: 1,
+                    name: 'Monkey',
+                    description: 'This is a monkey',
+                    fullDescription: 'This is full description on the monkey',
+                    price: 5.50,
+                    imageUrl: moneyImage
+                },
                 amount: 0
+            },
+            {
+                product: {
+                    id: 2,
+                    name: 'Kitten',
+                    description: 'This is a kitten',
+                    fullDescription: 'This is full description on the kitten',
+                    price: 10.00,
+                    imageUrl: kittensImage
+                },
+                amount: 2
             }
         ]
     }
@@ -102,13 +121,73 @@ class ShoppingCart extends Component {
                                                         close={this.closePopup}
                                                         product={this.state.selectedProduct}
                                                         addToCart={this.addToCart}/>}
+                <Sidebar products={this.state.cart}
+                         add={this.addProduct}
+                         remove={this.removeProduct}
+                         clearCart={this.clearCart}/>
                 {this.state.selectedProduct && <div className="overlay"></div>}
             </div>
         )
     }
 
+    clearCart = () => {
+        this.setState({
+            cart: []
+        }); 
+    }
+
+    addProduct = (productId) => {
+
+        console.log('add', productId);
+
+        const newProductDetails = [...this.state.cart];
+
+        const productDetails = newProductDetails.find((productDetails) => productDetails.product.id === productId);
+        productDetails.amount++;
+
+        this.setState({
+            cart: newProductDetails
+        });
+        
+    }
+
+    removeProduct = (productId) => {
+        console.log('remove', productId);
+
+        const newProductDetails = [...this.state.cart];
+
+        const productDetails = newProductDetails.find((productDetails) => productDetails.product.id === productId);
+        if (productDetails.amount === 0)
+            return;
+        productDetails.amount--;
+
+        this.setState({
+            cart: newProductDetails
+        });
+    }
+
     addToCart = (amount) => {
-        console.log('product', this.state.selectedProduct, 'amount', amount);
+
+        //console.log('product', this.state.selectedProduct, 'amount', amount);
+        const cart = [...this.state.cart];
+        const productDetails = cart.find((product) => product.product.id === this.state.selectedProduct.id);
+    
+        if (productDetails) {
+            productDetails.amount += amount;
+        }
+        else {
+            cart.push({
+                amount,
+                product: this.state.selectedProduct
+            });
+        }
+
+        this.setState({
+            cart
+        });
+
+        this.closePopup();
+
     }
 
     openPopup = (product) => {

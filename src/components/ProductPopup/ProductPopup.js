@@ -4,13 +4,13 @@ import './ProductPopup.scss';
 class ProductPopup extends Component {
 
     state = {
-        quantity: ''
+        quantity: 0
     }
 
     render() {
 
         let buttonDisabled = false;
-        if (this.state.quantity === '' || isNaN(this.state.quantity))
+        if (this.state.quantity === 0 || isNaN(this.state.quantity))
             buttonDisabled = true;
 
         return (
@@ -27,7 +27,7 @@ class ProductPopup extends Component {
                     <div className="quantity">Quantity</div>
                     <input type="text" 
                            className="quantity-number"
-                           onChange={(e) => this.setState({quantity: e.target.value})}
+                           onChange={(e) => this.setState({quantity: parseInt(e.target.value)})}
                            value={this.state.quantity}/>
                     <button className="add-to-cart-btn"
                             disabled={buttonDisabled}

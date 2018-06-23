@@ -16,6 +16,7 @@ class ShoppingCart extends Component {
 
     state = {
         selectedProduct: null,
+
         products: [
             {
                 id: 1,
@@ -81,6 +82,13 @@ class ShoppingCart extends Component {
                 price: 5.00,
                 imageUrl: mangoImage
             }
+        ],
+
+        cart: [
+            {
+                productId: 1,
+                amount: 0
+            }
         ]
     }
 
@@ -92,10 +100,15 @@ class ShoppingCart extends Component {
                              openPopup={this.openPopup}/>
                 {this.state.selectedProduct && <ProductPopup 
                                                         close={this.closePopup}
-                                                        product={this.state.selectedProduct}/>}
+                                                        product={this.state.selectedProduct}
+                                                        addToCart={this.addToCart}/>}
                 {this.state.selectedProduct && <div className="overlay"></div>}
             </div>
         )
+    }
+
+    addToCart = (amount) => {
+        console.log('product', this.state.selectedProduct, 'amount', amount);
     }
 
     openPopup = (product) => {

@@ -24,7 +24,8 @@ class ProductList extends Component {
                 {productRows.map((products, index) => (
                     <ProductRow products={products}
                                 key={index}
-                                openPopup={this.props.openPopup}/>
+                                openPopup={this.props.openPopup}
+                                addToCart={this.props.addToCart}/>
                 ))}
 
             </div>

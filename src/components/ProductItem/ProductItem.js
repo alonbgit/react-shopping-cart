@@ -15,7 +15,7 @@ class ProductItem extends Component {
                     <span className="product-description">{this.props.description}</span>
                     <span className="product-price">${this.props.price.toFixed(2)}</span>
                 </div>
-                <button className="add-to-cart-btn">Add to Cart</button>
+                <button className="add-to-cart-btn" onClick={this.props.addToCart}>Add to Cart</button>
             </div>
         )
     }

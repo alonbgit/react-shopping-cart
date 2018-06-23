@@ -116,7 +116,8 @@ class ShoppingCart extends Component {
             <div className="shopping-cart">
                 <span className="header">Products</span>
                 <ProductList products={this.state.products}
-                             openPopup={this.openPopup}/>
+                             openPopup={this.openPopup}
+                             addToCart={this.addSingleProduct}/>
                 {this.state.selectedProduct && <ProductPopup 
                                                         close={this.closePopup}
                                                         product={this.state.selectedProduct}
@@ -164,6 +165,27 @@ class ShoppingCart extends Component {
         this.setState({
             cart: newProductDetails
         });
+    }
+
+    addSingleProduct = (product) => {
+
+        const cart = [...this.state.cart];
+        const productDetails = cart.find((c) => c.product.id === product.id);
+
+        if (productDetails) {
+            productDetails.amount++;
+        }
+        else {
+            cart.push({
+                amount: 1,
+                product
+            });
+        }
+
+        this.setState({
+            cart
+        });
+
     }
 
     addToCart = (amount) => {

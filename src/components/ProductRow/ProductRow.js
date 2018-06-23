@@ -14,7 +14,8 @@ class ProductRow extends Component {
                                 description={product.description}
                                 price={product.price}
                                 imageUrl={product.imageUrl}
-                                openPopup={() => this.props.openPopup(product)}/>
+                                openPopup={() => this.props.openPopup(product)}
+                                addToCart={() => this.props.addToCart(product)}/>
                     return productItem;
                 })}
             </div>

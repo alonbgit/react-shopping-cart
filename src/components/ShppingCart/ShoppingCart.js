@@ -3,6 +3,7 @@ import ProductList from '../ProductList/ProductList';
 import './ShoppingCart.scss';
 import ProductPopup from '../ProductPopup/ProductPopup';
 import Sidebar from '../Sidebar/Sidebar';
+import CheckoutPopup from '../CheckoutPopup/CheckoutPopup';
 
 import moneyImage from '../../images/products/chimpanzee.jpg';
 import kittensImage from '../../images/products/kittens.jpg';
@@ -17,6 +18,10 @@ class ShoppingCart extends Component {
 
     state = {
         selectedProduct: null,
+
+        isCheckout: false,
+
+        totalPrice: 0,
 
         products: [
             {
@@ -118,17 +123,37 @@ class ShoppingCart extends Component {
                 <ProductList products={this.state.products}
                              openPopup={this.openPopup}
                              addToCart={this.addSingleProduct}/>
+
                 {this.state.selectedProduct && <ProductPopup 
                                                         close={this.closePopup}
                                                         product={this.state.selectedProduct}
                                                         addToCart={this.addToCart}/>}
+
+                {this.state.isCheckout && <CheckoutPopup
+                                                close={this.closeCheckoutPopup}
+                                                totalPrice={this.state.totalPrice}/>}
+
                 <Sidebar products={this.state.cart}
                          add={this.addProduct}
                          remove={this.removeProduct}
-                         clearCart={this.clearCart}/>
-                {this.state.selectedProduct && <div className="overlay"></div>}
+                         clearCart={this.clearCart}
+                         checkoutCart={this.checkoutCart}/>
+
+                {this.showOverlay() && <div className="overlay"></div>}
             </div>
         )
+    }
+
+    showOverlay = () => {
+        return this.state.selectedProduct ||
+               this.state.isCheckout;
+    }
+
+    checkoutCart = (e) => {
+       this.setState({
+         isCheckout: true,
+         totalPrice: e.totalPrice
+       }); 
     }
 
     clearCart = () => {
@@ -221,6 +246,12 @@ class ShoppingCart extends Component {
     closePopup = () => {
         this.setState({
             selectedProduct: null
+        });
+    }
+
+    closeCheckoutPopup = () => {
+        this.setState({
+            isCheckout: false
         });
     }
 

@@ -19,7 +19,7 @@ class Sidebar extends Component {
                 <span className="total-price">${totalPrice.toFixed(2)}</span>
                 <div className="buttons">
                     <button className="clear-cart-btn" onClick={this.props.clearCart}>Clear Cart</button>
-                    <button className="checkout-btn">Checkout</button>
+                    <button className="checkout-btn" onClick={() => this.props.checkoutCart({totalPrice: totalPrice})}>Checkout</button>
                 </div>
             </div>
         )
